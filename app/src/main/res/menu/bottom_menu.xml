@@ -7,9 +7,4 @@
         android:icon="@drawable/ic_baseline_dashboard_24"
         android:title="Главная"
         app:showAsAction="always" />
-    <item
-        android:id="@+id/profileFragment"
-        android:icon="@drawable/ic_baseline_person_24"
-        android:title="Профиль"
-        app:showAsAction="always" />
 </menu>

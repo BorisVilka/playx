@@ -15,9 +15,5 @@ class ActivityGame : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-        val navController = navHostFragment.navController
-        NavigationUI.setupWithNavController(binding.bottomNavigationView,navController)
-
     }
 }

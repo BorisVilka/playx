@@ -22,6 +22,8 @@ class MainActivity : AppCompatActivity() {
 
     var linkBuilderOffer = "aHR0cHM6Ly92eW96bC54eXovZ3pmemJTc1M="
     lateinit var binding: ActivityMainBinding
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)

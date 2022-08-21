@@ -8,8 +8,6 @@ import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.identifier.AdvertisingIdClient
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException
 import com.google.android.gms.common.GooglePlayServicesRepairableException
-import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.auth.FirebaseAuth
 import com.onesignal.OneSignal
 import java.io.IOException
 import java.lang.Error
@@ -37,7 +35,7 @@ class PlayGamex:Application() {
         Thread{
             try {
                 val info = AdvertisingIdClient.getAdvertisingIdInfo(this)
-                ad = info?.id
+                ad = info.id
                 Log.e("ad", "$ad")
             } catch (exception: IOException) {
             } catch (exception: GooglePlayServicesRepairableException) {
@@ -50,6 +48,7 @@ class PlayGamex:Application() {
 
         val conversionListener  = object : AppsFlyerConversionListener {
             override fun onConversionDataSuccess(p0: MutableMap<String, Any>?) {
+                Log.d("TAG","SUCCESS CONV")
                 p0?.let { cvData ->
                     cvData.map {
                         Log.e("APS", "conversion_attribute:  ${it.key} = ${it.value}")
@@ -66,11 +65,18 @@ class PlayGamex:Application() {
                         try {sub5 = campaign[4]} catch (e: Error){sub5 = ""}
                         flowkey = cvData.getValue("flowkey").toString()
                     }
+                    Log.d("TAG", af_status+" STATUS")
                 }
             }
-            override fun onConversionDataFail(p0: String?) {}
-            override fun onAppOpenAttribution(p0: MutableMap<String, String>?) {}
-            override fun onAttributionFailure(p0: String?) {}
+            override fun onConversionDataFail(p0: String?) {
+                Log.d("TAG","CONV FAIL "+p0)
+            }
+            override fun onAppOpenAttribution(p0: MutableMap<String, String>?) {
+                Log.d("TAG","ATTR")
+            }
+            override fun onAttributionFailure(p0: String?) {
+                Log.d("TAG", "ATTR FAIL")
+            }
         }
 
         AppsFlyerLib.getInstance().run {

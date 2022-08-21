@@ -33,11 +33,17 @@ android {
         viewBinding true
         dataBinding true
     }
+    buildTypes {
+        // Prevents a signing error when building the production app
+        release {
+            signingConfig signingConfigs.debug
+        }
+    }
 }
 
 dependencies {
-    implementation 'com.google.firebase:firebase-auth:21.0.6'
-    implementation 'com.google.firebase:firebase-analytics:21.1.0'
+    implementation 'com.google.firebase:firebase-auth:21.0.7'
+    //implementation 'com.google.firebase:firebase-analytics:21.1.0'
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.6.1'
